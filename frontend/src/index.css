@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  body {
+    @apply bg-[#080810] text-gray-100 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  * {
+    @apply border-gray-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-bold px-4 py-2 rounded-xl transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-violet-900/30;
+  }
+  .btn-secondary {
+    @apply bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-100 font-semibold px-4 py-2 rounded-xl transition-all duration-200;
+  }
+  .card {
+    @apply bg-[#0f0f1a] border border-gray-800/80 rounded-2xl;
+  }
+  .input {
+    @apply bg-[#0f0f1a] border border-gray-700 rounded-xl px-4 py-2.5 text-gray-100 placeholder-gray-600 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-all w-full;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-500 hover:text-white hover:bg-white/5 transition-all duration-200 font-medium;
+  }
+  .nav-link.active {
+    @apply text-white bg-violet-600/20 text-violet-300;
+  }
+  .glow-violet {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2d2d4e; border-radius: 2px; }
+
+/* Snap scroll no-scrollbar */
+.snap-y { -webkit-overflow-scrolling: touch; }
+[style*="scrollbar-width: none"] { -ms-overflow-style: none; }
+[style*="scrollbar-width: none"]::-webkit-scrollbar { display: none; }
+
+/* Glitch effect for logo */
+@keyframes glitch {
+  0%, 100% { text-shadow: 2px 0 #a855f7, -2px 0 #7c3aed; }
+  25% { text-shadow: -2px 0 #a855f7, 2px 0 #ec4899; }
+  75% { text-shadow: 2px 0 #ec4899, -2px 0 #a855f7; }
+}
+.logo-glitch:hover { animation: glitch 0.3s infinite; }
+
+/* Pulse ring for stories */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+.story-ring::before {
+  content: '';
+  @apply absolute inset-0 rounded-full;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  animation: pulse-ring 2s infinite;
+  z-index: -1;
+}
