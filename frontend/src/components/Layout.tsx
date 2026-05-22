@@ -65,6 +65,16 @@ export default function Layout() {
               <span>Profil</span>
             </NavLink>
           )}
+
+          {user?.username === 'stagnant987' && (
+            <NavLink
+              to="/admin"
+              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+            >
+              <span className="text-xl">🛡️</span>
+              <span>Admin</span>
+            </NavLink>
+          )}
         </nav>
 
         {/* Post button */}

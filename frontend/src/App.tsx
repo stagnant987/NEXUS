@@ -10,6 +10,7 @@ import CommunitiesPage from './pages/CommunitiesPage';
 import CommunityPage from './pages/CommunityPage';
 import ReelsPage from './pages/ReelsPage';
 import RiftPage from './pages/RiftPage';
+import AdminPage from './pages/AdminPage';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const token = useAuthStore((s) => s.token);
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="communities" element={<CommunitiesPage />} />
         <Route path="communities/:id" element={<CommunityPage />} />
         <Route path="profile/:username" element={<ProfilePage />} />
+        <Route path="admin" element={<AdminPage />} />
       </Route>
     </Routes>
   );

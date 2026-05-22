@@ -11,6 +11,7 @@ import messageRoutes from './routes/messages';
 import communityRoutes from './routes/communities';
 import storyRoutes from './routes/stories';
 import notificationRoutes from './routes/notifications';
+import adminRoutes from './routes/admin';
 import { setupSocket } from './services/socket';
 
 const app = express();
@@ -37,6 +38,7 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/communities', communityRoutes);
 app.use('/api/stories', storyRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/admin', adminRoutes);
 
 setupSocket(io);
 
