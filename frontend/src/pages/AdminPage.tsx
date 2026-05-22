@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
-const ADMIN_USERNAME = 'stagnant987';
+const ADMIN_USERNAME = 'pat';
 
 interface Stats {
   users: number;

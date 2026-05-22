@@ -66,7 +66,7 @@ export default function Layout() {
             </NavLink>
           )}
 
-          {user?.username === 'stagnant987' && (
+          {user?.username === 'pat' && (
             <NavLink
               to="/admin"
               className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}

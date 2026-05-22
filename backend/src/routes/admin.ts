@@ -5,11 +5,11 @@ import { authenticate, AuthRequest } from '../middleware/auth';
 const router = Router();
 const prisma = new PrismaClient();
 
-const ADMIN_EMAIL = 'thnpatiri@gmail.com';
+const ADMIN_USERNAME = 'pat';
 
 async function requireAdmin(req: AuthRequest, res: Response): Promise<boolean> {
-  const user = await prisma.user.findUnique({ where: { id: req.userId }, select: { email: true } });
-  if (!user || user.email !== ADMIN_EMAIL) {
+  const user = await prisma.user.findUnique({ where: { id: req.userId }, select: { username: true } });
+  if (!user || user.username !== ADMIN_USERNAME) {
     res.status(403).json({ error: 'Accès refusé' });
     return false;
   }
@@ -66,9 +66,9 @@ router.put('/users/:id/verify', authenticate, async (req: AuthRequest, res: Resp
 router.delete('/users/:id', authenticate, async (req: AuthRequest, res: Response) => {
   if (!await requireAdmin(req, res)) return;
 
-  const user = await prisma.user.findUnique({ where: { id: req.params.id }, select: { email: true } });
+  const user = await prisma.user.findUnique({ where: { id: req.params.id }, select: { username: true } });
   if (!user) return res.status(404).json({ error: 'Utilisateur non trouvé' });
-  if (user.email === ADMIN_EMAIL) return res.status(400).json({ error: 'Impossible de supprimer le compte admin' });
+  if (user.username === ADMIN_USERNAME) return res.status(400).json({ error: 'Impossible de supprimer le compte admin' });
 
   await prisma.user.delete({ where: { id: req.params.id } });
   res.json({ success: true });
